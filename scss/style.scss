@@ -1,0 +1,290 @@
+$Very-Dark-Gray: hsl(0, 0%, 17%);
+$Dark-Gray: hsl(0, 0%, 59%);
+
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 1.1rem;
+  font-family: 'Rubik', sans-serif;
+  overflow-y: hidden;
+  background: #020228;
+}
+//preloader
+.preloader{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+
+  ul{
+    display: flex;
+
+    li{
+      display: block;
+      width: .4em;
+      height: 40px;
+      background: deeppink;
+      margin: 0 .5em;
+      animation: loader 3s linear infinite;
+      transform: scaleY(0);
+      transform-origin: bottom;
+
+      &:nth-child(2){
+        animation-delay: .3s;
+      }
+
+      &:nth-child(3){
+        animation-delay: .6s;
+      }
+    }
+  }
+}
+
+@keyframes loader{
+  0%{
+    transform: scaleY(0);
+  }
+  10%{
+    transform: scaleY(0);
+  }
+  20%{
+    transform: scaleY(1);
+  }
+  30%{
+    transform: scaleY(1);
+  }
+  40%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(1);
+  }
+  100%{
+    transform: scaleY(0);
+  }
+}
+header{
+  position: relative;
+  width: 100%;
+  min-height: 40vh;
+  padding: 2.5em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1{
+    color: white;
+    margin: .8em 0;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  .videobkg{
+    z-index: -1;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+    filter: brightness(60%);
+  }
+}
+.results{
+  padding: 1em;
+  position: absolute;
+  background: white;
+  width: 65em;
+  height: 10em;
+  border-radius: .5em;
+  bottom: -5em;
+  border: 1px solid deeppink;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25%);
+  z-index: 50;
+}
+.card{
+  padding: .4em;
+  border-right: deeppink 2px solid;
+
+  h5{
+    color: $Dark-Gray;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+  }
+
+  h3{
+    color: deeppink;
+  }
+
+  &:nth-child(4){
+    border-right: none;
+  }
+}
+.input-wrapper{
+  width: 35em; //submit btn 10
+  height: 3.1em;
+  //background: white;
+  display: flex;
+
+  input{
+    width: 90%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 0 1em;
+    border-radius: .5em 0 0 .5em;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  button{
+    display: block;
+    width: 10%;
+    height: 100%;
+    background: deeppink;
+    outline: none;
+    border: none;
+    border-radius: 0 .8em .8em 0 ;
+    cursor: pointer;
+    transition: .2s;
+
+    img{
+      filter: invert(1);
+      width: 2em;
+    }
+
+    &:hover{
+      background: pink;
+    }
+  }
+}
+.refresh{
+  border-radius: .5em;
+  background: deeppink;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  cursor: pointer;
+  display: none;
+
+  img{
+    width: 2em;
+    cursor: pointer;
+    filter: invert(1);
+  }
+}
+.map{
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 60vh;
+  overflow-y: hidden;
+  transition: .3s;
+  background: black;
+}
+.error-popup{
+  position: fixed;
+  top: 0;
+  left: -20em;
+  width: 15em;
+  height: 4em;
+  background: red;
+  display: grid;
+  place-items: center;
+  color: white;
+  transition: .4s;
+}
+.error-popup-show{
+  left: 0;
+  transition: .3s;
+}
+.error-popup-hide{
+  left: -20em;
+  transition: left .4s;
+}
+#ip{
+  transition: .5s;
+}
+
+@media screen and (max-width: 1100px){
+  .results{
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 25%));
+  }
+}
+
+@media screen and (max-width: 870px){
+  .results{
+    width: 90%;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    min-height: 20em;
+    bottom: -14em;
+  }
+  .card{
+    border-right: none;
+    border-bottom: $Dark-Gray 1px solid;
+
+    &:nth-child(4){
+      border-bottom: none;
+    }
+  }
+}
+@media screen and (max-width: 750px){
+  .input-wrapper{
+    width: 25em;
+
+    input{
+      width: 80%;
+    }
+    button{
+      width: 20%;
+    }
+  }
+}
+@media screen and (max-width: 420px){
+  header{
+    padding: 2.5em 3em;
+  }
+  .results{
+    bottom: -17em;
+  }
+  .logo{
+    img{
+      width: 5em;
+    }
+  }
+  .input-wrapper {
+    width: 20em;
+  }
+  .refresh{
+    width: 3.5em;
+    height: 3.5em;
+
+    img{
+      width: 2em;
+    }
+
+  }
+}
+@media screen and (max-width: 340px){
+  html{
+    font-size: 1rem;
+  }
+  header{
+    padding: 2em 2em;
+  }
+  .input-wrapper {
+    width: 15em;
+  }
+}

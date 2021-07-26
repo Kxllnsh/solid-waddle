@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <title>IP Address Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./scss/style.css">
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+  <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+</head>
+<body>
+<div class="preloader">
+  <uL>
+    <li></li>
+    <li></li>
+    <li></li>
+  </uL>
+</div>
+  <header>
+    <h1>IP Address Tracker</h1>
+
+    <form action="/" id="form">
+      <div class="input-wrapper">
+        <input type="text" name="Search" id="input-search" autocomplete="none" placeholder="Search for any IP address or domain">
+        <label for="input-search"></label>
+
+        <button type="submit" id="search">
+          <img src="./images/search-location-solid.svg" alt="arrow">
+        </button>
+      </div>
+      <div class="refresh">
+        <img src="./images/sync-alt-solid.svg" alt="refresh">
+      </div>
+    </form>
+
+
+    <div class="results">
+      <div class="card">
+        <h5>IP ADDRESS</h5>
+        <h3 id="ip">...</h3>
+      </div>
+      <div class="card">
+        <h5>Location</h5>
+        <h3 id="location">...</h3>
+      </div>
+      <div class="card">
+        <h5>Timezone</h5>
+        <h3 id="timezone">...</h3>
+      </div>
+      <div class="card">
+        <h5>isp</h5>
+        <h3 id="isp">...</h3>
+      </div>
+    </div>
+
+    <div class="error-popup">
+      Field can't be empty!
+    </div>
+
+    <video src="./images/videoplayback.mp4" autoplay loop muted class="videobkg"></video>
+  </header>
+
+  <main>
+    <div class="map" id="mapContainer"></div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="JS/App.js"></script>
+</body>
+</html>
